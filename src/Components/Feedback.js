@@ -25,17 +25,15 @@ export default function Feedback() {
   };
 
   const onLeaveFeedback = (e) => {
-    const elem = e.target.name;
-
-    switch (elem) {
+    switch (e.target.name) {
       case "good":
-        setGood(elem + 1);
+        setGood((prevState) => prevState + 1);
         break;
       case "neutral":
-        setNeutral(elem + 1);
+        setNeutral((prevState) => prevState + 1);
         break;
       case "bad":
-        setBad(elem + 1);
+        setBad((prevState) => prevState + 1);
         break;
 
       default:
@@ -43,14 +41,15 @@ export default function Feedback() {
     }
   };
 
+  console.log((bad, good, neutral));
   return (
     <div>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={Object.keys(bad, good, neutral)}
+          options={Object.keys({ good, bad, neutral })}
           onLeaveFeedback={onLeaveFeedback}
         />
-        {this.countTotalFeedback() === 0 ? (
+        {countTotalFeedback() === 0 ? (
           <Notification message="No feedback given" />
         ) : (
           <Statistics

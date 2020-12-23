@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import shortid from 'shortid';
+import PropTypes from "prop-types";
+import shortid from "shortid";
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <>
-      {options.map(option => (
+      {options.map((option) => (
         <button
           key={shortid.generate()}
           type="button"
